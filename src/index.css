@@ -1,0 +1,308 @@
+/* ==========================================================================
+   POLLO QUE HACE POLLO · DESIGN SYSTEM & CORE CSS
+   Modern Glassmorphic Dark UI + High-Contrast Display
+   ========================================================================== */
+
+:root {
+  /* Brand Identity (Warm Ember & Charcoal) */
+  --ember-50: #FFF7ED;
+  --ember-100: #FFEDD5;
+  --ember-400: #FB923C;
+  --ember-500: #FF6A00;
+  --ember-600: #E65100;
+  --ember-700: #C2410C;
+  --ember-gradient: linear-gradient(135deg, #FF7A18 0%, #E65100 100%);
+  --ember-glow: rgba(255, 106, 0, 0.35);
+
+  /* Order States (Customer Display & Kitchen) */
+  --ready-bg: rgba(16, 185, 129, 0.12);
+  --ready-border: rgba(16, 185, 129, 0.4);
+  --ready-text: #34D399;
+  --ready-glow: rgba(16, 185, 129, 0.4);
+
+  --prep-bg: rgba(245, 158, 11, 0.12);
+  --prep-border: rgba(245, 158, 11, 0.4);
+  --prep-text: #FBBF24;
+  --prep-glow: rgba(245, 158, 11, 0.3);
+
+  --delivered-bg: rgba(99, 102, 241, 0.12);
+  --delivered-border: rgba(99, 102, 241, 0.4);
+  --delivered-text: #818CF8;
+
+  --danger-bg: rgba(239, 68, 68, 0.12);
+  --danger-border: rgba(239, 68, 68, 0.4);
+  --danger-text: #F87171;
+
+  /* Surfaces & Dark Mode Foundations */
+  --bg-app: #080B11;
+  --bg-surface: #0E131F;
+  --bg-card: #151D2D;
+  --bg-card-hover: #1C273C;
+  --bg-input: #101726;
+  --bg-glass: rgba(21, 29, 45, 0.75);
+
+  /* Borders & Dividers */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-medium: rgba(255, 255, 255, 0.16);
+  --border-active: #FF7A18;
+
+  /* Typography */
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+  --text-inverse: #080B11;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 24px var(--ember-glow);
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Typography Stack */
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* Reset & Box Sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-surface);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-medium);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ember-500);
+}
+
+/* Container Utility */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: radial-gradient(circle at 10% 20%, rgba(255, 106, 0, 0.05) 0%, transparent 40%),
+              radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.04) 0%, transparent 45%),
+              var(--bg-app);
+}
+
+/* Glassmorphism Card Component */
+.glass-panel {
+  background: var(--bg-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.glass-panel:hover {
+  border-color: var(--border-medium);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+  user-select: none;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--ember-gradient);
+  color: white;
+  box-shadow: 0 4px 14px var(--ember-glow);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(255, 106, 0, 0.5);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+}
+
+.btn-secondary {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+}
+
+.btn-secondary:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-medium);
+}
+
+.btn-success {
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  color: white;
+  box-shadow: 0 4px 14px var(--ready-glow);
+}
+
+.btn-success:hover {
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+}
+
+.btn-outline:hover {
+  color: var(--text-primary);
+  border-color: var(--border-medium);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.btn-icon {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: var(--radius-md);
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.badge-ready {
+  background: var(--ready-bg);
+  border: 1px solid var(--ready-border);
+  color: var(--ready-text);
+  box-shadow: 0 0 10px var(--ready-glow);
+}
+
+.badge-prep {
+  background: var(--prep-bg);
+  border: 1px solid var(--prep-border);
+  color: var(--prep-text);
+}
+
+.badge-delivered {
+  background: var(--delivered-bg);
+  border: 1px solid var(--delivered-border);
+  color: var(--delivered-text);
+}
+
+.badge-danger {
+  background: var(--danger-bg);
+  border: 1px solid var(--danger-border);
+  color: var(--danger-text);
+}
+
+/* Input Fields */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.input-field {
+  background: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-field:focus {
+  border-color: var(--ember-500);
+  box-shadow: 0 0 0 3px rgba(255, 106, 0, 0.2);
+}
+
+/* Animations */
+@keyframes pulseGlow {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 20px var(--ready-glow);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 35px var(--ready-glow);
+  }
+}
+
+@keyframes flashNew {
+  0% {
+    background-color: rgba(255, 106, 0, 0.3);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2.5s infinite ease-in-out;
+}
+
+.animate-flash {
+  animation: flashNew 1.2s ease-out;
+}
